@@ -1,0 +1,95 @@
+﻿@model WebApplication14.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+    <div>
+
+
+
+        <h1>@Model.Baslik</h1>
+        <hr />
+        <p>
+            <span class="glyphicon glyphicon-time"></span>
+            @Model.EkelemTarihi
+        </p>
+        <hr />
+        <img src="@Model.Resim" class="img-responsive" />
+        <hr />
+        <blockquote>
+            @Model.Aciklama
+        </blockquote>
+        <p>
+            @Model.Icerik
+        </p>
+
+
+        <div class="comment">
+            <hr />
+            <div class="well">
+                <h4>Yorum Yap :</h4>
+                <form role="form">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>
+            <hr />
+
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        Elif Sancaklı
+                        <small>August 25, 2014 at 9:30 PM</small>
+                    </h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </div>
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        Murat Başerer
+                        <small>August 25, 2014 at 9:30 PM</small>
+                    </h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        @section sagKolon{
+           <br /><br /><br />
+                <div class="well">
+                    <h2>YAZILIM DÜNYASI</h2>
+                    <p>Aramak İtediğiniz Terimi Yazınız...</p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+               
+
+            @{ Html.RenderAction("KategoriListesi", "Category");}
+
+        }
+
+</div>
+
+
+
+

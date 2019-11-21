@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebApplication14.Models.Blog>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>BLOG SAYFAM</h2>
+<hr />
+
+
+<div>
+
+
+
+    @foreach (var item in Model)
+    {
+        <div class="well">
+            <div class="media">
+                <a class="pull-left" href="#">
+
+                    <img class="media-object" src="@item.Resim">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">@item.Baslik</h4>
+                    <p class="text-right">Muhammed GÖÇER</p>
+                    <p>
+                        @item.Aciklama
+                    </p>
+                    @Html.ActionLink("Daha Fazlası...", "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    <ul class="list-inline list-unstyled">
+                        <li><span><i class="glyphicon glyphicon-calendar"></i>@item.EkelemTarihi </span></li>
+                        <li>|</li>
+                        <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                        <li>|</li>
+                        <li>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </li>
+                        <li>|</li>
+                        <li>
+                            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                            <span><i class="fa fa-facebook-square"></i></span>
+                            <span><i class="fa fa-twitter-square"></i></span>
+                            <span><i class="fa fa-google-plus-square"></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    }
+
+
+
+
+
+    @section sagKolon{
+        <div class="mt-5">
+            <br /><br /><br />
+            <div class="well">
+                <h2>YAZILIM DÜNYASI</h2>
+                <p>Aramak İtediğiniz Terimi Yazınız...</p>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+
+
+            @{ Html.RenderAction("KategoriListesi", "Category");}
+        </div>
+    }
+
+
+</div>
+        
+
+   
+

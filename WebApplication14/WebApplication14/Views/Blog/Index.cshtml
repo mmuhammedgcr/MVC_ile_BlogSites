@@ -1,0 +1,102 @@
+﻿@model IEnumerable<WebApplication14.Models.Blog>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Blog Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Blog Ekle", "Create",null,new { @class="btn btn-danger"})
+</p>
+<table class="table table-bordered table-hover table-striped table-condensed">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resim)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.EkelemTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Onay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anasayfa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Baslik)
+    </td>
+    <td style="width:170px;">
+        @if (item.Icerik.Length > 120)
+        {
+            <label> @item.Icerik.Substring(0, 70)...</label>
+
+        }
+        else
+        {
+            @Html.DisplayFor(modelItem => item.Icerik)
+        }
+
+    </td>
+    <td style="width:50px;">
+        @if (item.Resim.Length > 20)
+        {
+            <label>@item.Resim.Substring(0, 20)...</label>
+        }
+        else
+        {
+            @Html.DisplayFor(modelItem => item.Resim)
+        }
+
+    </td>
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.EkelemTarihi)
+    </td>
+    <td>
+        @if (item.Onay)
+        {
+            <label class="label label-success">Onaylı</label>
+        }
+        else
+        {
+            <label class="label label-danger">Onay Bekliyor...</label>
+        }
+    </td>
+    <td>
+
+        @Html.DisplayFor(modelItem => item.Anasayfa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CategoriId)
+    </td>
+    <td>
+        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Detay", "Details", new { id = item.Id }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-warning" })
+    </td>
+</tr>
+    }
+
+</table>
